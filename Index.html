@@ -82,29 +82,48 @@
 </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact fade-in">
-    <h2>Contact Me</h2>
-    <p>Let’s connect and work together! Reach out via email or socials below.</p>
-    <form>
-      <input type="text" placeholder="Emmanuel Oko" required>
-      <input type="email" placeholder="okoemmanuel606@gmail.com" required>
-      <textarea placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/emmanuel-oko-075a68380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
-      <a href="https://github.com/Emma-oko">GitHub</a>
-      <a href="https://twitter.com/Ermah100">Twitter</a>
-<a href="https://Fiverr.com/emmanueloko941">Fiverr</a>
-    </div>
-  </section>
+<!-- CONTACT -->
+<section id="contact" class="contact fade-in">
+  <h2>Contact Me</h2>
+  <p>Let’s connect and work together! Reach out via email or socials below.</p>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Emmanuel Oko. All rights reserved.</p>
-  </footer>
+  <!-- Contact Form (frontend only, opens email client) -->
+  <form onsubmit="sendEmail(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 
-  <script src="script.js"></script>
+  <!-- Social links -->
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/emmanuel-oko-075a68380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Emma-oko" target="_blank">GitHub</a>
+    <a href="https://twitter.com/Ermah100" target="_blank">Twitter</a>
+    <a href="https://www.fiverr.com/emmanueloko941" target="_blank">Fiverr</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Emmanuel Oko. All rights reserved.</p>
+</footer>
+
+<!-- Email script -->
+<script>
+  function sendEmail(e) {
+    e.preventDefault(); // Prevent default form submission
+    const form = e.target;
+    const name = form[0].value;
+    const email = form[1].value;
+    const message = form[2].value;
+
+    // Open the user's email client with pre-filled info
+    window.location.href = `mailto:okoemmanuel606@gmail.com?subject=Message from Portfolio Website&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+  }
+</script>
+
+<!-- External JS file -->
+<script src="script.js"></script>
 </body>
 </html>
