@@ -1,4 +1,4 @@
-/* ========== STYLES ========== */
+/* GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +7,10 @@
 }
 
 body {
-  line-height: 1.6;
-  background: #f5f5f5;
+  background-color: #FFF8F0;
   color: #333;
+  line-height: 1.6;
 }
-
 /* ===== NAVBAR ===== */
 .navbar {
   display: flex;
@@ -25,7 +24,7 @@ body {
   z-index: 100;
 }
 
-.navbar .logo {
+.logo {
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -33,233 +32,247 @@ body {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
+/* ===== NAVBAR LINKS HOVER ===== */
 .nav-links a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s, background 0.3s;
+  padding: 0.5rem 1rem; /* optional, for easier hover */
+  border-radius: 5px; /* optional, smooth hover effect */
 }
 
-.nav-links a:hover {
-  color: #ff6b6b;
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ff0b0b;      /* text color on hover */
+  background: rgba(255, 255, 255, 0.1); /* optional subtle background */
 }
 
-/* ===== HERO SECTION ===== */
-.hero {
-  display: flex;
+/* Hamburger menu (hidden on desktop) */
+.hamburger {
+  display: none;
   flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: -100%; /* hidden off-screen */
+    flex-direction: column;
+    background-color: #1e1e2f;
+    width: 60%; /* responsive width */
+    padding: 1rem;
+    border-radius: 8px;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    right: 0; /* visible when hamburger clicked */
+  }
+
+  .hamburger {
+    display: flex; /* show hamburger on mobile */
+  }
+}
+
+/* HERO SECTION */
+.hero {
+  height: 90vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 90vh;
-  background: linear-gradient(135deg, #6b5b95, #feb236);
-  color: #fff;
+  background: url('https://via.placeholder.com/1200x800?text=Restaurant+Hero') center/cover no-repeat;
+  color: #FFF8F0;
   padding: 0 1rem;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
+.hero .hero-content {
+  max-width: 700px;
+  margin: auto;
 }
 
-.hero h1 span {
-  color: #ffeb3b;
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .btn {
+  background-color: #FFD700;
+  color: #FF6B6B;
   padding: 0.8rem 2rem;
-  background: #ff6b6b;
-  color: #fff;
-  border: none;
   border-radius: 30px;
-  text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  background: #ff3b3b;
+  background-color: #e6c200;
+  color: #cc0000;
 }
-
-/* ===== SECTIONS ===== */
-section {
+/* SECTIONS */
+.section {
   padding: 5rem 2rem;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #1e1e2f;
+  margin-bottom: 2rem;
+  color: #FF6B6B;
 }
 
-/* ===== ABOUT ===== */
-.skills {
+/* MENU */
+.menu-grid {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.skills span {
-  background: #ffeb3b;
-  color: #1e1e2f;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-}
-
-/* ===== PROJECTS ===== */
-/* ===== PROJECTS ===== */
-.projects {
-  background: #f9f9f9;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.project-card {
+.menu-item {
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 250px;
 }
 
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
-}
-
-.project-card img {
+.menu-item img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
-  display: block;
 }
 
-.project-info {
-  padding: 1.5rem;
+.menu-item h3 {
+  margin: 0.5rem 1rem;
+  color: #FF6B6B;
 }
 
-.project-info h3 {
-  font-size: 1.3rem;
-  color: #1e1e2f;
-  margin-bottom: 0.5rem;
-}
-
-.project-info p {
-  font-size: 0.95rem;
+.menu-item p {
+  margin: 0.5rem 1rem;
+  font-size: 0.9rem;
   color: #555;
-  margin-bottom: 1rem;
 }
 
-.project-info a {
-  display: inline-block;
-  padding: 0.6rem 1.5rem;
-  background: #ff6b6b;
-  color: #fff;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
+.menu-item span {
+  display: block;
+  margin: 0.5rem 1rem 1rem;
+  font-weight: 700;
+  color: #FFD700;
 }
 
-.project-info a:hover {
-  background: #ff3b3b;
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
-/* Responsive project card grid */
-@media (max-width: 768px) {
-  .project-card {
-    margin-bottom: 2rem;
-  }
+.gallery-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s;
 }
-/* ===== CONTACT ===== */
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* CONTACT */
 .contact form {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  max-width: 450px;
   margin: auto;
   gap: 1rem;
 }
 
-.contact input, 
-.contact textarea, 
-.contact button {
+.contact input, .contact textarea, .contact button {
   padding: 0.8rem;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 1rem;
 }
 
 .contact button {
-  background: #ff6b6b;
-  color: #fff;
+  background: #FFD700;
+  color: #FF6B6B;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .contact button:hover {
-  background: #ff3b3b;
+  background: #e6c200;
 }
 
+/* SOCIALS */
 .socials {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .socials a {
   text-decoration: none;
-  color: #1e1e2f;
+  color: #FF6B6B;
   font-weight: 600;
-  transition: color 0.3s;
 }
 
 .socials a:hover {
-  color: #ff6b6b;
+  color: #FFD700;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem;
-  background: #1e1e2f;
+  background-color: #FF6B6B;
   color: #fff;
 }
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-out;
-}
 
-.fade-in.appear {
-  opacity: 1;
-  transform: translateY(0px);
-}
-
-/* ===== RESPONSIVE ===== */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 700%; /* hide off-screen */
+    flex-direction: column;
+    background-color: #FF6B6B;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    /* make transition instant for toggle */
+    transition: none;
   }
 
-  .nav-links {
-    display: none; /* We can add a hamburger menu later */
+  .nav-links.active {
+    right: 10px; /* show menu instantly */
   }
 }
